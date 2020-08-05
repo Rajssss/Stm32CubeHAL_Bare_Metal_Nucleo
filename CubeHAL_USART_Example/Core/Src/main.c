@@ -31,16 +31,3 @@ void SystemClockConfig(void)
 
 
 
-void HAL_MspInit()
-{
-	//Low Level Initializations
-
-	//Setup Priority Grouping
-
-	//Enable Required exceptions
-
-	//Configure Priority of the exceptions
-}
-
-
-
