@@ -3,13 +3,21 @@
  *
  *  Created on: Aug 5, 2020
  *      Author: Raj.S
+ *      Description: This Program transmits user data via USART2
+ *      			 in Async mode.
  */
 
+#include <string.h>
 #include "main.h"
 #include "stm32f4xx_hal.h"
 
 
 UART_HandleTypeDef USART2_Handler;
+
+
+//User Data
+char *USER_DATA= "Hello Embedded World!\r\n";
+
 
 
 int main()
@@ -19,6 +27,10 @@ int main()
 	SystemClockConfig();
 
 	USART2_Init();
+
+	HAL_UART_Transmit(&USART2_Handler, (uint8_t*)USER_DATA, strlen(USER_DATA), HAL_MAX_DELAY);
+
+	while(1);
 
 	return 0;
 }
@@ -65,9 +77,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
 {
 	GPIO_InitTypeDef GPIO_USART2;
 
-	//Enable Peripheral Clock
+	//Enable Peripheral Clocks
 	__HAL_RCC_USART2_CLK_ENABLE();
-
+	__HAL_RCC_GPIOA_CLK_ENABLE();
 
 	//GPIO Pin Mux config
 	GPIO_USART2.Pin = GPIO_PIN_2;
