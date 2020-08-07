@@ -25,3 +25,32 @@ void HAL_MspInit()
 	HAL_NVIC_SetPriority(UsageFault_IRQn, 0, 0);
 
 }
+
+
+
+//USART Low Level Inits
+void HAL_UART_MspInit(UART_HandleTypeDef *huart)
+{
+	GPIO_InitTypeDef GPIO_USART2;
+
+	//Enable Peripheral Clocks
+	__HAL_RCC_USART2_CLK_ENABLE();
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+
+	//GPIO Pin Mux config
+	GPIO_USART2.Pin = GPIO_PIN_2;
+	GPIO_USART2.Alternate = GPIO_AF7_USART2;
+	GPIO_USART2.Mode = GPIO_MODE_AF_PP;
+	GPIO_USART2.Pull = GPIO_PULLUP;
+	GPIO_USART2.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(GPIOA, &GPIO_USART2);
+
+	GPIO_USART2.Pin = GPIO_PIN_3;
+	HAL_GPIO_Init(GPIOA, &GPIO_USART2);
+
+
+	//IRQ and Priority Config
+	HAL_NVIC_EnableIRQ(USART2_IRQn);
+	HAL_NVIC_SetPriority(USART2_IRQn, 15, 0);
+
+}
