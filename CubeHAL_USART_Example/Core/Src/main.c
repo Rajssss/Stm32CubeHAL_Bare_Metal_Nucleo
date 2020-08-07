@@ -3,8 +3,9 @@
  *
  *  Created on: Aug 5, 2020
  *      Author: Raj.S
- *      Description: This Program transmits user data via USART2
- *      			 in Async mode.
+ *      Description: This Program transmits user data receives a string via USART2(Async)
+ *      			 and convert the lower case letters to upper case then send it.
+ *
  */
 
 #include <string.h>
@@ -18,6 +19,8 @@ UART_HandleTypeDef USART2_Handler;
 //User Data
 char *USER_DATA= "Hello Embedded World!\r\n";
 
+uint8_t Rcvd_Data;
+uint8_t Data_Buffer[100];
 
 
 int main()
@@ -29,6 +32,26 @@ int main()
 	USART2_Init();
 
 	HAL_UART_Transmit(&USART2_Handler, (uint8_t*)USER_DATA, strlen(USER_DATA), HAL_MAX_DELAY);
+
+	uint32_t count = 0;
+
+	while(1)
+	{
+		HAL_UART_Receive(&USART2_Handler, &Rcvd_Data, 1, HAL_MAX_DELAY);    //Read byte by byte
+
+		if(Rcvd_Data == '\r')
+		{
+			//detect Return/Enter key
+			Data_Buffer[count++] = '\r';
+			break;
+		}
+		else
+		{
+			Data_Buffer[count++] = Convert_To_Upper(Rcvd_Data);
+		}
+	}
+
+	HAL_UART_Transmit(&USART2_Handler, (uint8_t*)Data_Buffer, count, HAL_MAX_DELAY);
 
 	while(1);
 
@@ -98,5 +121,24 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
 	HAL_NVIC_SetPriority(USART2_IRQn, 15, 0);
 
 }
+
+
+//convert lower case to upper from received data
+uint8_t Convert_To_Upper(uint8_t data)
+{
+	if(data >= 'a' && data <= 'z')
+	{
+		//covert to lower case
+		data = data - 32;
+	}
+	else
+	{
+		//skip if upper case
+	}
+
+	return data;
+
+}
+
 
 
