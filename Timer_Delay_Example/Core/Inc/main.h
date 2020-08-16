@@ -14,6 +14,7 @@
 //Prototypes
 void Error_Handler(void);
 void System_Clock_Config(void);
+void GIOP_LED_Init(void);
 void TIM6_Init(void);
 
 #endif /* INC_MAIN_H_ */
