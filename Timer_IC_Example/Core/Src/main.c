@@ -62,7 +62,7 @@ int main(void)
 			IP_Siganl_Freq = 1 / (counter_diff * TIM2_Resolution);			//(counter_diff * TIM2_Resolution) will give the time period
 
 			sprintf(sDataBuffer, "Freq of I/P Signal => %f\r\n", IP_Siganl_Freq);
-			//HAL_UART_Transmit(&UART2Init, (uint8_t *)sDataBuffer, strlen(sDataBuffer), HAL_MAX_DELAY);
+			HAL_UART_Transmit(&UART2Init, (uint8_t *)sDataBuffer, strlen(sDataBuffer), HAL_MAX_DELAY);
 
 			is_captured = 0;
 
@@ -354,7 +354,7 @@ void UART2_Init(void)
 	UART2Init.Instance = USART2;
 	UART2Init.Init.BaudRate = 115200;
 	UART2Init.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-	UART2Init.Init.Mode = UART_MODE_RX;
+	UART2Init.Init.Mode = UART_MODE_TX_RX;
 	UART2Init.Init.Parity = UART_PARITY_NONE;
 	UART2Init.Init.StopBits = UART_STOPBITS_1;
 	UART2Init.Init.WordLength = UART_WORDLENGTH_8B;
