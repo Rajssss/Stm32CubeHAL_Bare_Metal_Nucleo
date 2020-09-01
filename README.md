@@ -21,7 +21,8 @@ Currently this repo contains example applications for:-
 -> Interrupt Based Time Base generation using Basic Timer (Timer_Delay_IT_Example)  
 -> Input Capture using General Purpose Timer and Calculation of frequency of the applied signalof freq 32.768KHz  (LSE clock)(Timer_IC_Example)  
 -> Input Capture using General Purpose Timer and Calculation of frequency of the applied signalof freq 50KHz, generated using Basic timer. (Timer_IC_Example)  
--> Output Capture Uing General Purpose Timer and generation of signals with various frequencies. (Timer_OC_Example)  
+-> Output Capture Using General Purpose Timer and generation of signals with various frequencies. (Timer_OC_Example)  
+-> PWM Using General Purpose Timer and generation of PWM signals with different Duty cycles. (Timer_PWM_Example)  
 -> More Coming Soon..    
   
   
