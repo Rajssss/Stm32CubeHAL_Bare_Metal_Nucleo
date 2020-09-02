@@ -23,6 +23,7 @@ Currently this repo contains example applications for:-
 -> Input Capture using General Purpose Timer and Calculation of frequency of the applied signalof freq 50KHz, generated using Basic timer. (Timer_IC_Example)  
 -> Output Capture Using General Purpose Timer and generation of signals with various frequencies. (Timer_OC_Example)  
 -> PWM Using General Purpose Timer and generation of PWM signals with different Duty cycles. (Timer_PWM_Example)  
+-> LED Brightness Control Using PWM (Timer_PWM_LED_Brightness_Example)  
 -> More Coming Soon..    
   
   
