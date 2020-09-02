@@ -24,6 +24,7 @@ Currently this repo contains example applications for:-
 -> Output Capture Using General Purpose Timer and generation of signals with various frequencies. (Timer_OC_Example)  
 -> PWM Using General Purpose Timer and generation of PWM signals with different Duty cycles. (Timer_PWM_Example)  
 -> LED Brightness Control Using PWM (Timer_PWM_LED_Brightness_Example)  
+-> LED Brightness Control Using PWM in Interrupt mode (Timer_PWM_IT_LED_Brightness_Example)  
 -> More Coming Soon..    
   
   
